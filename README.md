@@ -25,9 +25,11 @@ in order to server restart frequently , install nodemon
 npm i -D nodemon
 
 in package.json
-add script
-"start": "node server.js",
-"dev": "nodemon server.js",
+
+> add script
+
+    x "start": "node server.js",
+    x "dev": "nodemon server.js"
 
 run > npm run dev
 
@@ -53,3 +55,13 @@ server.js
 
 
 ```
+
+### 2. Express Middleware
+
+> npm i cors
+
+    x register cors with app.use
+    x request payload middleware
+    x include error middleware
+
+https://expressjs.com/en/guide/using-middleware.html
