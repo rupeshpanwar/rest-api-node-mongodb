@@ -181,3 +181,24 @@ raw => body
 
 
 ```
+
+### 6. toObject Transform => id & v
+
+https://mongoosejs.com/docs/api.html#document_Document-toObject
+
+> productModel
+
+    * below timestamps,
+    toObject:{
+        transform: function(doc,ret,options){
+            ret.id = ret._id;
+            delete ret._id
+            delete ret.__v
+            return ret
+        }
+    }
+
+> productService
+
+    * let result = await product.save
+    * return result.to'()
