@@ -98,3 +98,11 @@ touch database\connection.js
 
     . import dbConnection
     . initiate dbConnection() method
+
+### 4. Create Model n Schema
+
+> touch database/models/productModel.js
+
+    . import mongoose
+    . define product schema(mongoose.Schema)
+    . mongoose.model(Product,productSchema)
