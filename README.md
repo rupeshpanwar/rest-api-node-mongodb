@@ -202,3 +202,47 @@ https://mongoosejs.com/docs/api.html#document_Document-toObject
 
     * let result = await product.save
     * return result.to'()
+
+### 7. Create product API Schema - datatype/ extra field validation , to check request payload
+
+https://www.npmjs.com/package/@hapi/joi
+
+npm install @hapi/joi@15.1.0
+
+mkdir apiSchema
+
+> productSchema.js
+
+    x import Joi
+    x createProductSchema = Joi.object().keys()
+
+### 8. API schema validation middleware (routes)
+
+> constants
+
+    x add requestValidationMessage : BAD_REQUEST: invalid field
+
+mkdir middleware
+
+> touch joiSchemaValidation.js
+
+    x method validateBody(schema){
+        validateObjectSchema(req.body,schema);
+    }
+    x validateObjectSchema(data,schema){
+        joi.validate(data,schema,{covert:false})
+    x result.error.detail
+    x errorDetails = result.error.detail.map
+    }
+
+    x TEST in POSTMAN
+    x add error block
+
+> productRoutes
+
+    x add schemaMiddleware(joiSchemaValidation) here
+    x import productSchema
+    x router.post('/',jsv.validateBody(
+        productSchema.createProductSchema
+    ),productController.createProduct)
+    x add error block
