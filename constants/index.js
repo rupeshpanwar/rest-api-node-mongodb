@@ -7,5 +7,5 @@ module.exports = {
     productMessage: {
         PRODUCT_CREATED: 'product successfully created'
     }
-}
 
+}

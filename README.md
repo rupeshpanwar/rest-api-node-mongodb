@@ -110,7 +110,7 @@ touch database\connection.js
 ### 5. POST API : Create Product
 
 #Routes , controller, service
-**here is the path to follow** -[x]constants <= index.js -[x]Base path <= server -[x]route(post) <= productRoutes -[x]send to createProduct service <= roductController
+**here is the path to follow** -[x] constants <= index.js -[x] Base path <= server -[x] route(post) <= productRoutes -[x]send to createProduct service <= roductController
 & response to client with data -[x] create data & save <=productService
 & set response , data to controller
 
