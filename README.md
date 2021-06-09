@@ -65,3 +65,36 @@ server.js
     x include error middleware
 
 https://expressjs.com/en/guide/using-middleware.html
+
+```
+app.use(function (err, req, res, next) {
+    console.error(err.stack)
+    res.status(500).send({
+        status: 500,
+        message: err.message,
+        body: {}
+    })
+})
+```
+
+### 3. DB Connectivity
+
+#use MongoDB librarry
+
+> npm i mongoose
+
+.env
+
+> define DB_URL
+
+mkdir database
+
+touch database\connection.js
+
+. write mongoose
+.connect(DB_URL,useNewUrlParser) module
+
+> server.js
+
+    . import dbConnection
+    . initiate dbConnection() method

@@ -2,11 +2,18 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors'
 
+import dbConnection from './database/connection.js'
+
+
 
 dotenv.config()
 
 const app = express()
 
+//db connection
+dbConnection()
+
+//cors
 app.use(cors())
 
 //request payload middleware
