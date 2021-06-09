@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
-const dbConnection = async () => {
+module.exports = async () => {
     try {
         await mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -11,4 +11,3 @@ const dbConnection = async () => {
     }
 }
 
-export default dbConnection

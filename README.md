@@ -99,10 +99,90 @@ touch database\connection.js
     . import dbConnection
     . initiate dbConnection() method
 
-### 4. Create Model n Schema
+### 4. Create Product Model n Schema
 
 > touch database/models/productModel.js
 
     . import mongoose
     . define product schema(mongoose.Schema)
     . mongoose.model(Product,productSchema)
+
+### 5. POST API : Create Product
+
+#Routes , controller, service
+**here is the path to follow**
+[x]constants <= index.js
+[x]Base path <= server
+[x]route(post) <= productRoutes
+[x]send to createProduct service <= productController
+& response to client with data
+[x] create data & save <=productService
+& set response , data to controller
+
+> download POSTMAN to test api
+
+_define base level route path in app.use()_
+x app.use('/api/v1/product',require('./routes/productRoutes'))
+
+mkdir constants
+
+> touch index.js
+
+    x     define defaultServerResponse
+    status : 400
+    message: ''
+    body: {}
+    x productMessage{ Product_Created}
+
+mkdir routes
+
+> touch productRoutes.js
+
+     x import express
+     x express.Router()
+     x router.post('/,productController.createProduct)
+     x import productController
+
+**test in postman**
+mkdir controller
+
+> touch productController.js
+
+        x import constants
+        x createProduct(res.send(product created successfully))
+        x console.log(req.body)
+        x import productService
+        x productService.createProduct(req.body)
+        x let response = {...constants.defaultServerResponse}
+        x response.message = constants.productMessage.Product_Created
+
+**test in postman**
+_ send product info via POSTMAN
+_ now pass req.body to Service (business logic) to submit the info into DB
+
+> productService.js
+
+    x import productModel here(to create in DB)
+    x createProduct(serviceData=req.body) method
+    x new Product(...serviceData)
+    x product.save()
+
+> productController
+
+- receive the result from Service
+- create response object in below format as in error middleware
+- response.status , .message , .body
+- return res.status(response.status).send(response)
+
+**test in postman**
+
+```
+raw => body
+{
+    name:
+    price:
+    brand:
+}
+
+
+```

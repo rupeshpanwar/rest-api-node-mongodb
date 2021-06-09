@@ -1,10 +1,8 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors'
+const express = require('express')
+const dotenv = require('dotenv')
+const cors = require('cors')
 
-import dbConnection from './database/connection.js'
-
-
+const dbConnection = require('./database/connection');
 
 dotenv.config()
 
@@ -19,6 +17,10 @@ app.use(cors())
 //request payload middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
+
+//product base path route
+app.use('/api/v1/product', require('./routes/productRoutes'));
 
 app.get('/', (req, res, next) => {
     res.send('API Server is listening')
