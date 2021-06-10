@@ -21,3 +21,24 @@ module.exports.createProduct = async (req, res) => {
         .status(response.status)
         .send(response)
 }
+
+module.exports.getAllProducts = async (req, res) => {
+    const response = { ...constants.defaultServerResponse }
+
+    try {
+        const responseFromService = await productService.getAllProducts()
+
+        response.status = 200
+        response.message = constants.productMessage.PRODUCT_FETCHED
+        response.body = responseFromService
+
+    } catch (error) {
+
+        console.log('something went wrong: Controller:getAllProducts', error)
+        response.message = error.message
+
+    }
+    return res
+        .status(response.status)
+        .send(response)
+}

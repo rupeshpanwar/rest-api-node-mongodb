@@ -246,3 +246,21 @@ mkdir middleware
         productSchema.createProductSchema
     ),productController.createProduct)
     x add error block
+
+### 9. Pagination - List product
+
+summary
+
+- ProductRoute => add route router.get()
+- ProductService => create getAllProducts()
+  => PRoduct.find({})
+- ProductController => call getAllProducts() service & set the response for router/client
+- index => add PRoduct_Fetched message
+
+Apply a DB helper to convert toObject
+
+- touch helper/dbHelper.js
+- create method formatMongoData(data as an array)
+- check if array or not then apply toObject for conversion
+- productService.js => import formatMongoDB
+- call formatMongoDB from createProduct / getAllProduct
