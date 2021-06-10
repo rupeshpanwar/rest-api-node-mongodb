@@ -26,7 +26,7 @@ module.exports.getAllProducts = async (req, res) => {
     const response = { ...constants.defaultServerResponse }
 
     try {
-        const responseFromService = await productService.getAllProducts()
+        const responseFromService = await productService.getAllProducts(req.query)
 
         response.status = 200
         response.message = constants.productMessage.PRODUCT_FETCHED

@@ -13,9 +13,9 @@ module.exports.createProduct = async (serviceData) => {
     }
 }
 
-module.exports.getAllProducts = async (serviceData) => {
+module.exports.getAllProducts = async ({ skip = 0, limit = 10 }) => {
     try {
-        const products = await Product.find({})
+        const products = await Product.find({}).skip(parseInt(skip)).limit(parseInt(limit))
         return formatMongoData(products)
 
     } catch (error) {

@@ -27,3 +27,20 @@ module.exports.validateBody = (schema) => {
         return next();
     }
 }
+
+module.exports.validateQueryParams = (schema) => {
+    return (req, res, next) => {
+        let response = { ...constants.defaultServerResponse }
+
+        const error = validateObjectSchema(req.query, schema)
+        if (error) {
+            response.body = error
+            response.message = constants.requestValidationMessage.BAD_REQUEST
+
+            return res
+                .status(response.status)
+                .send(response)
+        }
+        return next()
+    }
+}

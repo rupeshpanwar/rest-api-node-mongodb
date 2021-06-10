@@ -15,6 +15,7 @@ router.post('/',
 )
 
 router.get('/',
+    joiSchemaValidation.validateQueryParams(productSchema.getAllProductsSchema),
     productController.getAllProducts
 )
 

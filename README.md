@@ -247,15 +247,15 @@ mkdir middleware
     ),productController.createProduct)
     x add error block
 
-### 9. Pagination - List product
+### 9. List product
 
 summary
 
-- ProductRoute => add route router.get()
-- ProductService => create getAllProducts()
+- ProductRoute => add route router.get('/',controller.getAllProduct)
+- ProductService => write busiiness logic to fetch all product in getAllProducts()
   => PRoduct.find({})
 - ProductController => call getAllProducts() service & set the response for router/client
-- index => add PRoduct_Fetched message
+- index => add Product_Fetched message
 
 Apply a DB helper to convert toObject
 
@@ -264,3 +264,13 @@ Apply a DB helper to convert toObject
 - check if array or not then apply toObject for conversion
 - productService.js => import formatMongoDB
 - call formatMongoDB from createProduct / getAllProduct
+
+### 10. Pagination - apply to List product[?skip=1&limit=10]
+
+Summary
+
+- productSchema => set it via Joi at schema level
+- productRoute => include joiSchemaValidation.validateQueryParams(productSchema.getAllProductSchema)
+- productController => call getAllProducts(req.query)
+- productService => async({skip=0,limit=10})
+  => Product.find({}).skip(parseInt(skip)).limit(parseInt(limit))
