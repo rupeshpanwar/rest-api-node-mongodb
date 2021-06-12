@@ -11,6 +11,10 @@ module.exports = {
         PRODUCT_UPDATED: 'product updated successfully',
         PRODUCT_DELETED: 'products deleted successfully'
     },
+    userMessage: {
+        SIGNUP_SUCCESS: 'user signed up successfully',
+        DUPLICATE_EMAIL: 'user with this email already exists'
+    },
     requestValidationMessage: {
         BAD_REQUEST: 'Invalid field'
     },

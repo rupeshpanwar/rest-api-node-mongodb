@@ -22,6 +22,10 @@ app.use(express.urlencoded({ extended: true }))
 //product base path route
 app.use('/api/v1/product', require('./routes/productRoutes'));
 
+//user base path route
+app.use('/api/v1/user',
+    require('./routes/userRoutes'))
+
 app.get('/', (req, res, next) => {
     res.send('API Server is listening')
 })

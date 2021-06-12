@@ -312,3 +312,32 @@ Summary
 | index             | constants PRODUCT_DELETED                              |
 | productController | call productService.deleteProduct(req.params)          |
 | productService    | deleteProduct({id}){Product.findbyIdandDelete(id)}     |
+
+### 14. User Signup API
+
+> npm i bcrypt
+> Summary
+
+| file                                 | action                                     |
+| ------------------------------------ | ------------------------------------------ |
+| userModel                            | create userSchema                          |
+| server                               | app.use(/api/v1/user,./routes/userRoutes)  |
+| userRoutes                           | router.post(/signup,userController.signup) |
+| \* jsv.vBody(userSchema.signup)      |
+| userController                       | create userService.signup() controller     |
+| - create signup service[userService] |
+| constant                             | userMessage                                |
+
+                                        - SIGNUP_SUCCESS
+                                        - DUPLICATE_EMAIL
+                                        userSchema| create schema on fields, email, passwords
+
+| userService |
+signup({email,password}{
+user.findone({email})
+})
+password = bcrypt.hash(password,12)
+new User(email,password)
+user.save()
+return formatmongoData(result) |
+TEST| POSTMAN
