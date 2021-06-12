@@ -14,6 +14,14 @@ router.post('/',
     productController.createProduct
 )
 
+router.get('/:id',
+    productController.getProductById
+)
+
+router.put('/:id',
+    joiSchemaValidation.validateBody(productSchema.updateProductSchema),
+    productController.updateProduct
+)
 router.get('/',
     joiSchemaValidation.validateQueryParams(productSchema.getAllProductsSchema),
     productController.getAllProducts

@@ -274,3 +274,28 @@ Summary
 - productController => call getAllProducts(req.query)
 - productService => async({skip=0,limit=10})
   => Product.find({}).skip(parseInt(skip)).limit(parseInt(limit))
+
+### 11. Get Product by Id
+
+Summary
+
+- productRoute => router.get('/:id, controller.getProductById)
+- productController => call productService.getProductById(req.params)
+- productService => getproductById({id}) { PRoduct.findbyId({id})}
+  formatMongoData , check if product exists or not
+- index.js => add PRODUCT_NOT_FOUND message  
+   => add INVALID_ID message
+- dbHelper => add method to check valid id via mongoose.Types.ObjectId.isValid(id){throw error invalid id}
+- productService => call checkValidId for id validation
+
+### 12. Update Product API
+
+Summary
+
+- create router.PUT(/id,jsValidation.validateBody(updateProductSchema)),
+  controller.UpdateProduct)
+- productSchema => updateProductSchema(all 3 fields without required)
+- productController => call updateProductService(id:req.params.id,updateInfo:req.body)
+- productService ({id,updateinfo}) =>Product.findOneandUpdate(id,updateinfo,{new:true})
+- index => update message for Product_Updated
+- TEST in POSTMAN
