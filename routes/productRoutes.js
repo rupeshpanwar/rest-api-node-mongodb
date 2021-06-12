@@ -22,6 +22,11 @@ router.put('/:id',
     joiSchemaValidation.validateBody(productSchema.updateProductSchema),
     productController.updateProduct
 )
+
+router.delete('/:id',
+    productController.deleteProduct
+)
+
 router.get('/',
     joiSchemaValidation.validateQueryParams(productSchema.getAllProductsSchema),
     productController.getAllProducts
