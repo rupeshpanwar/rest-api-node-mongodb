@@ -60,3 +60,18 @@ module.exports.updateProduct = async ({ id, updateInfo }) => {
         throw new Error(error)
     }
 }
+
+module.exports.deleteProduct = async ({ id }) => {
+    try {
+        checkValidId(id)
+        let product = await Product.findByIdAndDelete(id)
+        if (!product) {
+            throw new Error(constants.productMessage.PRODUCT_NOT_FOUND)
+        }
+        return formatMongoData(product)
+    } catch (error) {
+        console.log('something went wrong:Service:deleteProduct', error)
+        throw new Error(error)
+
+    }
+}

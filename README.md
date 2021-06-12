@@ -301,3 +301,14 @@ Summary
 - TEST in POSTMAN
 
 ### welcome to feature branch
+
+### 13. Delete API
+
+Summary
+
+| File              | Action                                                 |
+| ----------------- | ------------------------------------------------------ |
+| productRouter     | router.delete('/:id', productController.deleteProduct) |
+| index             | constants PRODUCT_DELETED                              |
+| productController | call productService.deleteProduct(req.params)          |
+| productService    | deleteProduct({id}){Product.findbyIdandDelete(id)}     |

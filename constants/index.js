@@ -8,7 +8,8 @@ module.exports = {
         PRODUCT_CREATED: 'product successfully created',
         PRODUCT_FETCHED: 'products fetched successfully',
         PRODUCT_NOT_FOUND: 'product not found',
-        PRODUCT_UPDATED: 'product is updated'
+        PRODUCT_UPDATED: 'product updated successfully',
+        PRODUCT_DELETED: 'products deleted successfully'
     },
     requestValidationMessage: {
         BAD_REQUEST: 'Invalid field'
