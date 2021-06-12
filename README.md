@@ -318,7 +318,7 @@ Summary
 > npm i bcrypt
 > Summary
 
-| file                                 | action                                     |
+| File                                 | Action                                     |
 | ------------------------------------ | ------------------------------------------ |
 | userModel                            | create userSchema                          |
 | server                               | app.use(/api/v1/user,./routes/userRoutes)  |
@@ -341,3 +341,23 @@ new User(email,password)
 user.save()
 return formatmongoData(result) |
 TEST| POSTMAN
+
+### 15. Login Api , JWT
+
+https://www.npmjs.com/package/jsonwebtoken
+
+jwt.io
+
+npm i jsonwebtoken
+
+Summary
+
+- userRoute > route.login(/login,jsv,usercontroller.login)
+- userController > call service login(req.body)
+- constants > add message for LOGIN_SUCCESS, USER_NOT_FOUND,INVALID_PASSWORD
+- userService > login({email,password}){ if(!user) isValid = bcrypt.compare(password,user.password)}
+- userService > token = jwt.signup({id:user.\_id},process.env.SECTRET_KEY|| 'my-secret-key',{expiresIn: 1d})
+  return {token}
+
+* .env > add SECRET*KEY
+  \_TEST with POSTMAN*
