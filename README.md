@@ -361,3 +361,21 @@ Summary
 
 * .env > add SECRET*KEY
   \_TEST with POSTMAN*
+
+### 16. Middleware - Token validation , Protect Routes
+
+Summary
+
+- constant > requestValidationMessage : TOKEN_MISSING
+- middleware/tokenValidation.js > validateToken(req,res, next){
+  if(!req.headers.authorization) => token missing }
+  - import jwt
+    token = req.headers.authorization.split('Bearer')[1].trim()
+    decoded = jwt.verify(token,process.env.SECRET_KEY || 'my-secret-key')
+- productRoute > add token middleware to route
+  - router.get('/',tokenValidation.ValidateToken, jscv,controller.getAllProduct)
+  - clg(req.headers.authorization.split('Bearer')[1].trim())
+
+_TEST with POSTMAN_
+
+- header > Authorization > Bearer token
