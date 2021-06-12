@@ -379,3 +379,19 @@ Summary
 _TEST with POSTMAN_
 
 - header > Authorization > Bearer token
+
+### 17.Swagger API documentation
+
+https://swagger.io/
+https://editor.swagger.io/
+https://www.npmjs.com/package/swagger-ui-express
+
+npm i swagger-ui-express yamljs
+
+Summary
+
+- root dir > create swagger.yaml
+- server > import swaggerUi/yaml
+  - swaggerDocument = YAML.load(./swagger.yaml)
+  - add swagger route app.use('/api-docs,swaggerUi.serve,swaggerUi.setup(swaggerDocument)) => add on process.env.NODE_ENV != production
+- swagger.yaml => add yaml documentation here

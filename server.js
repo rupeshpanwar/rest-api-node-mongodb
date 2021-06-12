@@ -2,6 +2,11 @@ const express = require('express')
 const dotenv = require('dotenv')
 const cors = require('cors')
 
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
+
+
 const dbConnection = require('./database/connection');
 
 dotenv.config()
@@ -25,6 +30,11 @@ app.use('/api/v1/product', require('./routes/productRoutes'));
 //user base path route
 app.use('/api/v1/user',
     require('./routes/userRoutes'))
+
+// API Documentation
+if (process.env.NODE_ENV != 'production') {
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+}
 
 app.get('/', (req, res, next) => {
     res.send('API Server is listening')
